@@ -1,3 +1,4 @@
+import { PipesModule } from './../pipes/pipes.module';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -11,6 +12,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
     IonicModule,
     CommonModule,
     FormsModule,
+    PipesModule,
     ExploreContainerComponentModule,
     RouterModule.forChild([{ path: '', component: Tab1Page }])
   ],
