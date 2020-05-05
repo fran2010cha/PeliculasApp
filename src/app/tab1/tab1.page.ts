@@ -10,7 +10,13 @@ import { Component, OnInit } from '@angular/core';
 export class Tab1Page implements OnInit {
 
   peliculasRecientes: Pelicula[] = [];
+  populares: Pelicula[] = [];
 
+
+  // slideOpts = {
+  //   slidesPerVier: 1.1,
+  //   freeMode: true
+  // };
   constructor(private moviesService: MoviesService) {
 
   }
@@ -20,6 +26,19 @@ export class Tab1Page implements OnInit {
       console.log('Resp', resp);
       this.peliculasRecientes = resp.results;
     });
+
+    this.getPopulares();
+  }
+  cargarMas() {
+    this.getPopulares();
   }
 
+  getPopulares() {
+    this.moviesService.getPopulares()
+    .subscribe( resp => {
+      console.log(resp.results);
+      const arrTemp = [ ...this.populares, ...resp.results];
+      this.populares = arrTemp;
+    });
+  }
 }
